@@ -77,7 +77,7 @@ function AnimalContent() {
 
   // Start animation timer for choosen animal
   useEffect(() => {
-    if (!paradeAnimal || !stamp) return;
+    if (!paradeAnimal) return;
 
     const duration = animalSpeed[paradeAnimal];
 
