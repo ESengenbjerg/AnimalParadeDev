@@ -23,6 +23,13 @@ function AnimalContent() {
   const [paradeAnimal, setParadeAnimal] = useState<Animal | null>(null);
 
   useEffect(() => {
+    const noStamp = searchParams.get("nostamp") === "1";
+
+    if (noStamp) {
+      setStamp(null); // 🔧 FIX: vi kör utan stamp
+      return;
+    }
+
     // If stamp is missing -> send to start page, protects the flow
     const raw = searchParams.get("stamp");
     if (!raw) {
