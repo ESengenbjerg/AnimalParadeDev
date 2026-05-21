@@ -126,6 +126,15 @@ function HomeContent() {
               <strong>ERROR! </strong> You must enter through the Tivoli to play
             </p>
           )}
+
+          <button
+            onClick={() =>
+              window.parent.postMessage({ type: "AMUSEMENT_CLOSE" }, "*")
+            }
+            className="px-8 py-4 text-2xl font-semibold rounded-xl shadow-lg bg-orange-400 hover:bg-orange-500 text-white transition"
+          >
+            Back to Loopland
+          </button>
         </article>
       </section>
     </main>
