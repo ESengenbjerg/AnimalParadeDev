@@ -54,12 +54,19 @@ function HomeContent() {
 
       // NEW API RESPONSE
       if (!result.stamp) {
-        // Ingen stamp → användaren får inte se något djur
-        console.log("NO STAMP - NO ANIMAL");
+        console.log("NO STAMP - SHOW ANIMAL ANYWAY");
         setLoading(false);
-        // router.push("/animal?nostamp=1");
+        router.push("/animal?nostamp=1"); // 🔧 FIX
         return;
       }
+
+      // if (!result.stamp) {
+      //   // Ingen stamp → användaren får inte se något djur
+      //   console.log("NO STAMP - NO ANIMAL");
+      //   setLoading(false);
+      //   // router.push("/animal?nostamp=1");
+      //   return;
+      // }
 
       // FIX: Base65-encode stamp before redirect
       const encoded = btoa(JSON.stringify(result.stamp));
