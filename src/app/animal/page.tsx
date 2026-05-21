@@ -32,7 +32,10 @@ function AnimalContent() {
 
     // Parse stamp from query, validate it
     try {
-      const parsed = JSON.parse(raw) as ParadeStamp;
+      // FIX: Base64-decode stamp
+      const decoded = atob(raw);
+      // const parsed = JSON.parse(raw) as ParadeStamp;
+      const parsed = JSON.parse(decoded) as ParadeStamp;
 
       // Animal in stamp must be of valid type
       if (!stampAnimals.includes(parsed.animal)) {
@@ -41,7 +44,8 @@ function AnimalContent() {
       }
 
       // If metal is present, it must be valid
-      if (parsed.metal !== undefined && !validMetals.includes(parsed.metal)) {
+      // FIX: allow null as stamp
+      if (parsed.metal != null && !validMetals.includes(parsed.metal)) {
         router.replace("/");
         return;
       }

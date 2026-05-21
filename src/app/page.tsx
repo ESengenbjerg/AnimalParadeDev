@@ -60,9 +60,13 @@ function HomeContent() {
         return;
       }
 
-      router.push(
-        `/animal?stamp=${encodeURIComponent(JSON.stringify(result.stamp))}`,
-      );
+      // FIX: Base65-encode stamp before redirect
+      const encoded = btoa(JSON.stringify(result.stamp));
+
+      // router.push(
+      //   `/animal?stamp=${encodeURIComponent(JSON.stringify(result.stamp))}`,
+      // );
+      router.push(`/animal?stamp=${encoded}`);
     } catch (err: any) {
       console.error("RAW ERROR:", err);
 
