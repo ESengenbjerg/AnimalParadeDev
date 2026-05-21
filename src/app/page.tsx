@@ -56,6 +56,7 @@ function HomeContent() {
       if (!result.stamp) {
         // Ingen stamp → användaren får inte se något djur
         console.log("NO STAMP - NO ANIMAL");
+        setLoading(false);
         // router.push("/animal?nostamp=1");
         return;
       }
